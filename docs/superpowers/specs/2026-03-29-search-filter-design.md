@@ -102,6 +102,31 @@ http.get("/api/tickets", ({ request }) => {
 |---------|-------------|
 | Search input | `search-filter-input` |
 
+## Acceptance Criteria
+
+### Functional
+- [ ] Search input renders above the ticket table with `data-testid="search-filter-input"`
+- [ ] Typing in the input filters tickets by case-insensitive substring match on title OR description
+- [ ] Input is debounced — API call fires only after `debounceMs` (default 300ms) of inactivity
+- [ ] Rapid keystrokes reset the debounce timer; only the final value triggers a fetch
+- [ ] Empty input (or clearing the input) returns all 18 tickets
+- [ ] Searching for a term matching no tickets returns an empty table
+- [ ] `debounceMs` prop overrides the default debounce delay
+- [ ] Selected ticket state is preserved when search results still include that ticket
+- [ ] Filtering works via `?search=` query param on `GET /api/tickets` (server-side via MSW)
+
+### Non-Functional
+- [ ] No external debounce library added — custom `useDebouncedValue` hook only
+- [ ] TanStack Query cache key includes search term — different queries cached independently
+- [ ] Existing TicketList loading/error states still work with search active
+
+### Tests Required
+- [ ] Unit test: `useDebouncedValue` returns initial value, updates after delay, resets on rapid change
+- [ ] Unit test: `GET /api/tickets?search=` returns filtered results
+- [ ] Playwright CT: `SearchFilter` renders, debounces, and calls `onSearch`
+- [ ] Playwright CT: `TicketList` with `searchQuery` shows only matching tickets
+- [ ] All existing tests continue to pass
+
 ## Out of Scope
 
 - Status/priority filter dropdowns
