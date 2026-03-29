@@ -110,4 +110,30 @@ test.describe("TicketList", () => {
 
     await expect(page.getByTestId("ticket-list-error")).toBeVisible()
   })
+
+  test("filters tickets when searchQuery is provided", async ({ mount, page }) => {
+    // Mock the search endpoint — "password" matches t-001 "Cannot reset password"
+    await page.route("**/api/tickets?search=password", (route) => {
+      const filtered = tickets.filter(
+        (t) =>
+          t.title.toLowerCase().includes("password") ||
+          t.description.toLowerCase().includes("password")
+      )
+      return route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify(filtered),
+      })
+    })
+
+    const component = await mount(
+      <TicketList selectedId={null} onSelect={() => {}} searchQuery="password" />
+    )
+
+    // Should show only the matching ticket(s)
+    await expect(page.getByTestId("ticket-list-row-t-001")).toBeVisible()
+
+    // A non-matching ticket should not be visible
+    await expect(page.getByTestId("ticket-list-row-t-002")).not.toBeVisible()
+  })
 })

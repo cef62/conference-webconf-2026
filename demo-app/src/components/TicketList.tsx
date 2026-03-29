@@ -17,6 +17,7 @@ const PRIORITY_COLOR: Record<Ticket["priority"], string> = {
 interface TicketListProps {
   selectedId: string | null
   onSelect: (id: string) => void
+  searchQuery?: string
 }
 
 function formatDate(iso: string): string {
@@ -26,8 +27,8 @@ function formatDate(iso: string): string {
   })
 }
 
-export function TicketList({ selectedId, onSelect }: TicketListProps) {
-  const { data: tickets, isLoading, isError } = useTickets()
+export function TicketList({ selectedId, onSelect, searchQuery }: TicketListProps) {
+  const { data: tickets, isLoading, isError } = useTickets(searchQuery)
 
   if (isLoading) {
     return (
