@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query"
 import type { Ticket } from "../types/ticket"
 
-async function fetchTickets(): Promise<Ticket[]> {
-  const response = await fetch("/api/tickets")
+async function fetchTickets(search?: string): Promise<Ticket[]> {
+  const url = search ? `/api/tickets?search=${encodeURIComponent(search)}` : "/api/tickets"
+  const response = await fetch(url)
   if (!response.ok) {
     throw new Error(`Failed to fetch tickets: ${response.status}`)
   }
@@ -17,10 +18,10 @@ async function fetchTicket(id: string): Promise<Ticket> {
   return response.json()
 }
 
-export function useTickets() {
+export function useTickets(search?: string) {
   return useQuery({
-    queryKey: ["tickets"],
-    queryFn: fetchTickets,
+    queryKey: ["tickets", { search }],
+    queryFn: () => fetchTickets(search),
   })
 }
 

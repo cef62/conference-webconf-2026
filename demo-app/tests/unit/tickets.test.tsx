@@ -35,6 +35,22 @@ describe("useTickets", () => {
     expect(result.current.data![0].id).toBe("t-001")
   })
 
+  it("filters tickets by search param", async () => {
+    const { result } = renderHook(() => useTickets("password"), {
+      wrapper: createWrapper(),
+    })
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
+    expect(result.current.data!.length).toBeGreaterThan(0)
+    expect(
+      result.current.data!.every(
+        (t) =>
+          t.title.toLowerCase().includes("password") ||
+          t.description.toLowerCase().includes("password")
+      )
+    ).toBe(true)
+  })
+
   it("handles server error", async () => {
     server.use(
       http.get("/api/tickets", () => {
