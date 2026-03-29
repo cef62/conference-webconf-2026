@@ -315,27 +315,6 @@ Addy Osmani's principles for AI agent specs:
 ## More detailed ≠ always better.
 ### Too many directives and the AI follows none well.
 
-
----
-
-# Demo 1: SDD with a Framework
-
-**spec-workflow-mcp in action**
-
-`[VIDEO — ~3-4 minutes]`
-
-^ SPEAKER NOTE — What to record: Start with a concrete feature requirement (e.g., "Add a search filter component with debounced input"). Show the spec-workflow-mcp web dashboard. Walk through: (1) Steering setup with project context, (2) Spec generation from the requirement — pause to show the generated spec structure, (3) Plan generation — show how it breaks the work into ordered steps, (4) Execute one task — show the agent writing code from the plan, (5) Quick look at the Kanban-like progress view. Speed up the waiting parts. Narrate live over the recording. Total screen recording: ~8-10 min, edited to ~3-4 min.
-
----
-
-# Demo 2: SDD Without a Framework
-
-**Claude Code + CLAUDE.md + plan mode**
-
-`[VIDEO — ~3-4 minutes]`
-
-^ SPEAKER NOTE — What to record: Same or similar feature as Demo 1, but with zero framework. Show: (1) Your CLAUDE.md and project rules briefly, (2) Ask Claude Code to create a spec — you iterate on it, save to specs/feature/spec.md, (3) Switch to plan mode (Shift+Tab), ask for an implementation plan, save to plan.md, (4) Execute step by step — one task, review the diff, commit, next task, (5) Show the final result side by side with the spec. Key message: same workflow, same quality, fewer moving parts. Total screen recording: ~8-10 min, edited to ~3-4 min.
-
 ---
 
 # The Honest Assessment
