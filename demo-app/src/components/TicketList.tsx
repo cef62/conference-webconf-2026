@@ -1,4 +1,4 @@
-import { Badge, Box, Table, Text } from "@chakra-ui/react"
+import { Badge, Box, Skeleton, Stack, Table, Text } from "@chakra-ui/react"
 import { useTickets } from "../api/tickets"
 import type { Ticket } from "../types/ticket"
 
@@ -31,9 +31,11 @@ export function TicketList({ selectedId, onSelect }: TicketListProps) {
 
   if (isLoading) {
     return (
-      <Box data-testid="ticket-list-loading" p={4}>
-        <Text>Loading tickets...</Text>
-      </Box>
+      <Stack data-testid="ticket-list-loading" p={4} gap={3}>
+        {Array.from({ length: 6 }, (_, i) => (
+          <Skeleton key={i} height="20px" />
+        ))}
+      </Stack>
     )
   }
 
