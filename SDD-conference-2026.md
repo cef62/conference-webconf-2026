@@ -45,16 +45,16 @@ before I started.
 
 # What is a Spec?
 
-> A structured, behavior-oriented document that describes software functionality in natural language.
+> ### A structured, behavior-oriented document that describes software functionality in natural language.
 
 ^ Not a prompt. Not documentation written after the fact. A spec is the contract between you and the AI agent before any code gets written.
 
 ---
 
-# Not Just a Prompt
+# Not Just a Prompt 
 
-A prompt is a **one-shot instruction**.
-A spec is a **persistent agreement**.
+A prompt is a **one-shot instruction**
+A spec is a **persistent agreement**
 
 ```
 Prompt: "Add user authentication"
@@ -113,7 +113,8 @@ Specs **focus** your agent.
 **You write:** WHAT and WHY
 **The agent writes:** HOW
 
-This is the core idea. Everything else is tooling.
+This is the core idea. 
+Everything else is tooling.
 
 ---
 
@@ -181,7 +182,7 @@ And one more option: **no framework at all**.
 
 # Amazon Kiro
 
-A standalone IDE (VS Code fork) with the most opinionated SDD workflow.
+A VS Code fork with the most opinionated SDD workflow.
 
 **Requirements → Design → Tasks**
 Uses EARS notation. Human review gates at every step.
@@ -206,7 +207,7 @@ Open-source Python CLI. Works with **22+ AI agents**.
 The "Constitution" concept is powerful:
 project-level immutable principles that constrain every spec.
 
-✅ Agent-agnostic (Claude Code, Copilot, Cursor, Kiro...)
+✅ Agent-agnostic
 ✅ Rich ecosystem (VS Code extension, Microsoft Learn course)
 ⚠️ Generated specs can be verbose
 ⚠️ Python dependency
@@ -221,9 +222,8 @@ An MCP server — works inside any MCP-compatible tool.
 
 **Steering → Specifications → Implementation → Verification**
 
-✅ Real-time web dashboard on port 5000
+✅ Real-time web dashboard 
 ✅ VSCode extension for review and approval
-✅ Also available as Claude Code native skills
 ⚠️ MCP compatibility required
 
 ^ If your team already uses MCP servers, this fits naturally. The web dashboard is genuinely useful for reviewing specs — better than reading raw markdown files.
@@ -236,20 +236,19 @@ Not strictly an SDD tool.
 A **methodology encoded as agent skills**.
 
 Core patterns that matter:
-- Plan with atomic tasks (2-5 minutes each)
+- Plan with atomic tasks
 - Git worktree isolation per task
 - Subagent-driven implementation with self-review
 - TDD enforcement (red-green-refactor)
 
-✅ The patterns are universal — adopt them anywhere
+✅ The patterns are universal — adopt them anywhere 
 ✅ Works across Claude Code, Codex, Gemini CLI
-⚠️ Opinionated about TDD (not always practical)
 
 ^ Here's the key insight: you don't need to install Superpowers to benefit from it. The methodology — atomic tasks, isolated branches, self-review checklists — works with any tool.
 
 ---
 
-# What Superpowers Taught Me
+# What Superpowers Does Right
 
 The framework enforces three ideas:
 
@@ -303,20 +302,23 @@ No framework. No dependencies. Just markdown and discipline.
 
 Addy Osmani's principles for AI agent specs:
 
-1. **Be behavior-oriented** — describe what happens, not how to code it
-2. **Define boundaries** — ✅ Always / ⚠️ Ask first / 🚫 Never
-3. **Include edge cases** — the AI will skip them if you don't specify them
+1. **Be behavior-oriented** — describe what, not how to
+2. **Define boundaries** — Always / Ask first / Never
+3. **Include edge cases** — the AI might skip them 
 4. **Keep it atomic** — one concern per section
 5. **Write for the agent** — think "Agent Experience," not documentation
 
-> More detailed ≠ always better.
-> Too many directives and the AI follows none well.
-
 ^ Osmani calls this "AX" — Agent Experience. Design specs for agent consumption the same way we design APIs for developer experience.
+
+--- 
+
+## More detailed ≠ always better.
+### Too many directives and the AI follows none well.
+
 
 ---
 
-# 🎬 Demo 1: SDD with a Framework
+# Demo 1: SDD with a Framework
 
 **spec-workflow-mcp in action**
 
@@ -326,7 +328,7 @@ Addy Osmani's principles for AI agent specs:
 
 ---
 
-# 🎬 Demo 2: SDD Without a Framework
+# Demo 2: SDD Without a Framework
 
 **Claude Code + CLAUDE.md + plan mode**
 
@@ -340,19 +342,25 @@ Addy Osmani's principles for AI agent specs:
 
 Not everyone is convinced. The criticism is worth hearing.
 
-**Kent Beck:**
+---
+
+## Kent Beck
 _Emphasizing writing the whole specification before implementation encodes the assumption you won't learn anything during implementation._
 
-**Birgitta Böckeler (Thoughtworks):**
+---
+
+## Birgitta Böckeler (Thoughtworks)
 _I'd rather review code than all these markdown files._
 _I frequently saw the agent not follow all the spec instructions._
 
-**The waterfall question:**
+---
+
+## The waterfall question
 Is SDD just waterfall repackaged for the AI era?
 
 ---
 
-# My Answer: The SDD Triangle
+# The SDD Triangle
 
 SDD is not a one-way pipeline.
 
@@ -374,15 +382,19 @@ Start light. Iterate. Let the spec grow with the code.
 
 ---
 
-# When Is SDD Worth It?
+## When Is SDD Worth It?
 
-**Use SDD when:**
+--- 
+
+## Use SDD when
 - Multiple contributors need to understand the work
 - Requirements must persist beyond your current session
 - The task is complex enough to split into sub-tasks
 - You're working with an external team or vendor
 
-**Skip SDD when:**
+--- 
+
+## Skip SDD when
 - Solo exploration or learning
 - Small fixes (a few hours of work)
 - Requirements are still too vague to write down
@@ -394,18 +406,24 @@ Start light. Iterate. Let the spec grow with the code.
 
 # How I Actually Work
 
-**80% of the time:** Plan mode → informal spec
+- CLAUDE.md as my memory bank.
+- Atomic tasks. Review every diff. Commit per task.
+
+---
+
+## 80% of the time
+## Plan mode → informal spec
+
 Write the plan as a markdown file. Execute step by step.
-Transform into documentation when the feature ships.
+Transform into documentation when the feature ships. Use Superpowers.
 
-**20% of the time:** Full SDD workflow
+---
+
+## 20% of the time
+## Full SDD workflow
+
 For large features, team handoffs, vendor collaboration.
-Use spec-workflow-mcp or the no-framework path.
-
-**Always:** CLAUDE.md as my memory bank.
-Atomic tasks. Review every diff. Commit per task.
-
-The Superpowers patterns — without always running Superpowers.
+Use `spec-workflow-mcp` or the no-framework path.
 
 ---
 
@@ -440,6 +458,8 @@ The Superpowers patterns — without always running Superpowers.
 **Matteo Ronchi**
 [github.com/cef62](https://github.com/cef62)
 [linkedin.com/in/matteoronchi](https://www.linkedin.com/in/matteoronchi/)
+
+![right](./images/qrcode.png)
 
 ---
 

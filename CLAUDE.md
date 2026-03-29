@@ -1,16 +1,14 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project
 
-Conference presentation: **Spec-Driven Development — I tried every framework so you don't have to**
+Conference presentation: **Spec-Driven Development**
 Speaker: Matteo Ronchi (Software Architect @ WorkWave)
 Event: WebConf 2026 · 30 min slot · mid-level dev audience familiar with AI tools but not SDD specifically
 
 ## Slide Format (Deckset)
 
-- **Tool:** Deckset (macOS markdown presentation app)
+- **Tool:** Deckset (macOS markdown presentation app). [Docs](https://docs.deckset.com/markdownDocumentation.html)
 - **Slide separator:** `---` on its own line
 - **Speaker notes:** Lines starting with `^` (not rendered on slides, shown in presenter view)
 - **Images:** `![fit](./images/filename.png)` — `fit` scales to fill the slide
