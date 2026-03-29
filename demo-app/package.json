@@ -14,7 +14,7 @@
   "keywords": [],
   "author": "Matteo Ronchi <matteo.ronchi@gmail.com> (https://github.com/cef62)",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@chakra-ui/react": "3.34.0",
     "@emotion/react": "11.14.0",
