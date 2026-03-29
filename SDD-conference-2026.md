@@ -434,9 +434,10 @@ Use `spec-workflow-mcp` or the no-framework path.
 
 # Thank you!
 
-**Matteo Ronchi**
+## Matteo Ronchi
 [github.com/cef62](https://github.com/cef62)
 [linkedin.com/in/matteoronchi](https://www.linkedin.com/in/matteoronchi/)
+[github.com/cef62/conference-webconf-2026](https://github.com/cef62/conference-webconf-2026)
 
 ![right](./images/qrcode.png)
 
