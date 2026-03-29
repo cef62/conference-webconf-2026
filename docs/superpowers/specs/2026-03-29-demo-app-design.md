@@ -133,6 +133,64 @@ demo-app/
 - When set: fetches ticket via `useTicket(id)`, displays all fields
 - Chakra Card with Stack layout for fields
 
+## Acceptance Criteria
+
+### Layout
+
+- [ ] Header displays "Acme Support" app name
+- [ ] Page fills full viewport height, no scrollbar on the body
+- [ ] Left panel takes ~60% width, right panel ~40%
+- [ ] Both panels are visible side by side on load
+
+### Ticket List
+
+- [ ] All seeded tickets render as rows in a table
+- [ ] Each row shows: title, status badge, priority badge, created date
+- [ ] Status badges use correct colors: open=blue, in-progress=yellow, resolved=green
+- [ ] Priority badges use correct colors: low=gray, medium=orange, high=red
+- [ ] Clicking a row selects it — row gets a visible highlight
+- [ ] Clicking a different row moves the selection
+- [ ] While tickets are loading, skeleton/placeholder rows are shown
+- [ ] If the API returns an error, an error message is displayed
+
+### Ticket Detail
+
+- [ ] When no ticket is selected, shows centered "Select a ticket to view details" message
+- [ ] When a ticket is selected, displays: title, status badge, priority badge, assignee, description, created date, updated date
+- [ ] Status and priority badges match the same color scheme as the list
+- [ ] While the ticket is loading, a loading indicator is shown
+- [ ] If the ticket fetch fails (e.g., 404), an error message is shown
+
+### Data & API
+
+- [ ] MSW intercepts all `/api/tickets` and `/api/tickets/:id` requests — no network errors in devtools
+- [ ] Seed data contains 15-20 tickets with a realistic mix of statuses, priorities, assignees, and dates
+- [ ] `GET /api/tickets` returns all tickets
+- [ ] `GET /api/tickets/:id` returns a single ticket or 404 for unknown ids
+
+### Test IDs
+
+Every assertable element must have a `data-testid`. Required test IDs:
+
+- `layout-header` — header bar
+- `ticket-list-table` — the ticket table
+- `ticket-list-row-{id}` — each ticket row, keyed by ticket id
+- `ticket-list-status-badge-{id}` — status badge per row
+- `ticket-list-priority-badge-{id}` — priority badge per row
+- `ticket-list-loading` — skeleton/loading state
+- `ticket-list-error` — error state
+- `ticket-detail-panel` — the detail panel container
+- `ticket-detail-empty` — empty state message
+- `ticket-detail-title` — ticket title in detail
+- `ticket-detail-status-badge` — status badge in detail
+- `ticket-detail-priority-badge` — priority badge in detail
+- `ticket-detail-assignee` — assignee field
+- `ticket-detail-description` — description field
+- `ticket-detail-created` — created date
+- `ticket-detail-updated` — updated date
+- `ticket-detail-loading` — loading state in detail
+- `ticket-detail-error` — error state in detail
+
 ## TanStack Query Hooks
 
 ### useTickets()
@@ -180,6 +238,7 @@ Two test layers, each with a clear boundary:
   - `useTickets()` — returns ticket list, handles loading/error states
   - `useTicket(id)` — returns single ticket, skips fetch when id is null, handles 404
   - `data.ts` — seed data has correct shape, expected count, varied statuses/priorities
+- **Selectors:** Use `screen.getByTestId()` — all elements under test must have `data-testid` attributes
 - **Wrapper:** A test utility that wraps components in `QueryClientProvider` (fresh client per test) for hook testing via `renderHook`
 
 ### Playwright Component Testing (visual/interaction)
@@ -187,6 +246,7 @@ Two test layers, each with a clear boundary:
 - **Mode:** Component Testing (`playwright-ct`) — renders individual components in a real browser, no full app server needed
 - **Mount wrapper:** `playwright/index.tsx` provides `ChakraProvider` + `QueryClientProvider` so components render with styles and data
 - **MSW:** Use `page.route()` to intercept `/api/*` requests in Playwright — simpler than wiring MSW into the CT browser
+- **Selectors:** Use `page.getByTestId()` exclusively — all elements must have `data-testid` attributes (see Acceptance Criteria > Test IDs)
 - **What to test:**
   - `TicketList` — renders all tickets, shows correct status/priority badge colors, clicking a row calls onSelect, selected row is highlighted
   - `TicketDetail` — displays all ticket fields when given an id, shows empty state when no ticket selected, badge colors match status/priority

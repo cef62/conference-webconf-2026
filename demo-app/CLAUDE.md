@@ -41,6 +41,15 @@ npm run test:ct       # Playwright component tests
 - Test real user behavior: click rows, check visible text, verify badge colors via CSS/attribute assertions
 - Use `toBeVisible()` over `toBeInTheDocument()` — Playwright tests run in a real browser
 
+### Selectors
+
+- **All test selectors must use `data-testid` attributes** — never select by CSS class, tag name, or DOM structure
+- Every interactive or assertable element in a component must have a `data-testid`
+- Naming convention: `kebab-case`, scoped by component — e.g. `ticket-list-row-{id}`, `ticket-detail-title`, `ticket-detail-status-badge`
+- Playwright CT: use `page.getByTestId()` exclusively
+- Vitest/RTL: use `screen.getByTestId()` exclusively
+- Text assertions (`getByText`, `toHaveTextContent`) are allowed **only** for verifying displayed content, never as the primary selector for interacting with elements
+
 ### General
 
 - Every component, hook, and data module must have tests
