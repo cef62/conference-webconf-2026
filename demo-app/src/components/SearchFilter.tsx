@@ -1,6 +1,5 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Input } from "@chakra-ui/react"
-import { useState } from "react"
 import { useDebouncedValue } from "../hooks/useDebouncedValue"
 
 interface SearchFilterProps {
