@@ -1,4 +1,4 @@
-slidenumbers: false
+slidenumbers: true
 
 
 ![fit](./images/intro.png)
@@ -8,6 +8,7 @@ slidenumbers: false
 ![fit](./images/kudos.png)
 
 ---
+
 
 # Hello!
 
@@ -30,22 +31,17 @@ More capability = **more need for structure**.
 
 ---
 
-# My story
-
 I spent the last year testing SDD frameworks,
 building training programs, and shipping production code
 with AI agents.
 
-**Some things worked. Some didn't.**
-
-This talk is what I wish someone had told me
-before I started.
+## Some things worked. Some didn't.
 
 ---
 
 # What is a Spec?
 
-> ### A structured, behavior-oriented document that describes software functionality in natural language.
+A structured, behavior-oriented document that describes software functionality in natural language.
 
 ^ Not a prompt. Not documentation written after the fact. A spec is the contract between you and the AI agent before any code gets written.
 
@@ -113,8 +109,6 @@ Specs **focus** your agent.
 **You write:** WHAT and WHY
 **The agent writes:** HOW
 
-This is the core idea. 
-Everything else is tooling.
 
 ---
 
@@ -169,10 +163,10 @@ It's useful, but it's not the same thing.
 
 Four tools worth knowing in 2026:
 
-🔷 **Amazon Kiro** — opinionated IDE with built-in SDD
-🔷 **GitHub Spec Kit** — open-source, agent-agnostic (74k+ ⭐)
-🔷 **spec-workflow-mcp** — MCP server with web dashboard
-🔷 **Superpowers** — methodology framework (84k+ ⭐)
+**Amazon Kiro** — opinionated IDE with built-in SDD
+**GitHub Spec Kit** — open-source, agent-agnostic (74k+)
+**spec-workflow-mcp** — MCP server with web dashboard
+**Superpowers** — methodology framework (84k+)
 
 And one more option: **no framework at all**.
 
@@ -185,14 +179,14 @@ And one more option: **no framework at all**.
 A VS Code fork with the most opinionated SDD workflow.
 
 **Requirements → Design → Tasks**
-Uses EARS notation. Human review gates at every step.
+Uses EARS notation. Human review gates at every step. 
 
-✅ Great onboarding for SDD concepts
-⚠️ Can over-engineer small tasks
-⚠️ Locked to the Kiro IDE
+- Great onboarding for SDD concepts
+- Can over-engineer small tasks
+- Locked to the Kiro IDE
 
-Böckeler's observation: fixing a small bug generated
-**4 user stories with 16 acceptance criteria.**
+<!-- Böckeler's observation: fixing a small bug generated
+**4 user stories with 16 acceptance criteria.** -->
 
 ^ Kiro reached GA in November 2025. It's the best tool to understand what a full SDD workflow looks like — even if you end up not using it daily.
 
@@ -200,17 +194,16 @@ Böckeler's observation: fixing a small bug generated
 
 # GitHub Spec Kit
 
-Open-source Python CLI. Works with **22+ AI agents**.
+Open-source Python MCP. Works with **22+ AI agents**.
 
 **Constitution → Specify → Plan → Tasks → Implement**
 
 The "Constitution" concept is powerful:
 project-level immutable principles that constrain every spec.
 
-✅ Agent-agnostic
-✅ Rich ecosystem (VS Code extension, Microsoft Learn course)
-⚠️ Generated specs can be verbose
-⚠️ Python dependency
+- Agent-agnostic
+- Rich ecosystem
+- Generated specs can be verbose
 
 ^ Spec Kit is the dominant open-source option. The Constitution concept is something I've adopted even when not using Spec Kit — defining project-level boundaries up front saves enormous rework.
 
@@ -222,9 +215,9 @@ An MCP server — works inside any MCP-compatible tool.
 
 **Steering → Specifications → Implementation → Verification**
 
-✅ Real-time web dashboard 
-✅ VSCode extension for review and approval
-⚠️ MCP compatibility required
+- Real-time web dashboard 
+- VSCode extension for review and approval
+- MCP compatibility required
 
 ^ If your team already uses MCP servers, this fits naturally. The web dashboard is genuinely useful for reviewing specs — better than reading raw markdown files.
 
@@ -232,17 +225,13 @@ An MCP server — works inside any MCP-compatible tool.
 
 # Superpowers
 
-Not strictly an SDD tool.
-A **methodology encoded as agent skills**.
+Not strictly an SDD tool. A **methodology encoded as skills**.
 
-Core patterns that matter:
 - Plan with atomic tasks
 - Git worktree isolation per task
 - Subagent-driven implementation with self-review
 - TDD enforcement (red-green-refactor)
-
-✅ The patterns are universal — adopt them anywhere 
-✅ Works across Claude Code, Codex, Gemini CLI
+- Works across Claude Code, Codex, Gemini CLI
 
 ^ Here's the key insight: you don't need to install Superpowers to benefit from it. The methodology — atomic tasks, isolated branches, self-review checklists — works with any tool.
 
@@ -313,13 +302,15 @@ Addy Osmani's principles for AI agent specs:
 --- 
 
 ## More detailed ≠ always better.
-### Too many directives and the AI follows none well.
+### Too many directives and the AI wanders.
 
 ---
 
 # The Honest Assessment
 
-Not everyone is convinced. The criticism is worth hearing.
+Not everyone is convinced. 
+
+The criticism is worth hearing.
 
 ---
 
@@ -330,6 +321,7 @@ _Emphasizing writing the whole specification before implementation encodes the a
 
 ## Birgitta Böckeler (Thoughtworks)
 _I'd rather review code than all these markdown files._
+
 _I frequently saw the agent not follow all the spec instructions._
 
 ---
@@ -339,7 +331,7 @@ Is SDD just waterfall repackaged for the AI era?
 
 ---
 
-# The SDD Triangle
+# The SDD Triangle (Drew Breunig)
 
 SDD is not a one-way pipeline.
 
@@ -393,8 +385,9 @@ Start light. Iterate. Let the spec grow with the code.
 ## 80% of the time
 ## Plan mode → informal spec
 
-Write the plan as a markdown file. Execute step by step.
-Transform into documentation when the feature ships. Use Superpowers.
+Write the plan as a markdown file. 
+Execute step by step.
+Transform into documentation when the feature ships. 
 
 ---
 
@@ -402,7 +395,7 @@ Transform into documentation when the feature ships. Use Superpowers.
 ## Full SDD workflow
 
 For large features, team handoffs, vendor collaboration.
-Use `spec-workflow-mcp` or the no-framework path.
+Use **Superpowers** or the no-framework path.
 
 ---
 
@@ -418,10 +411,14 @@ Use `spec-workflow-mcp` or the no-framework path.
 
 # Resources
 
-**Analysis:**
+**Articles:**
 - [Böckeler: SDD Tools (martinfowler.com)](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)
 - [Osmani: How to Write Good Specs](https://addyosmani.com/blog/good-spec/)
 - [Breunig: The SDD Triangle](https://www.dbreunig.com/2026/03/04/the-spec-driven-development-triangle.html)
+
+---
+
+# Resources
 
 **Tools:**
 - [Amazon Kiro](https://kiro.dev/)
